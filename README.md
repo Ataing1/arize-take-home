@@ -11,3 +11,5 @@ using python 3.12.8
 
 `pip freeze` to check that it's a fresh virtual environment (should be empty)
 
+i asked claude to come up with a list of research papers and fundamental related topics and it wrote me a script to collect all of the PDFs and wrote a small blurb on how they relate to the fundamental concepts 
+

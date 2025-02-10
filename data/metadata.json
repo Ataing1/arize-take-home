@@ -1,0 +1,53 @@
+{
+  "papers": [
+    {
+      "title": "Attention Is All You Need",
+      "arxiv_id": "1706.03762",
+      "filename": "attention_transformer",
+      "year": 2017,
+      "key_concepts": [
+        "Transformer architecture",
+        "Self-attention",
+        "Multi-head attention"
+      ]
+    },
+    {
+      "title": "Deep Residual Learning for Image Recognition",
+      "arxiv_id": "1512.03385",
+      "filename": "resnet",
+      "year": 2015,
+      "key_concepts": [
+        "Residual connections",
+        "Deep networks",
+        "Gradient flow"
+      ]
+    },
+    {
+      "title": "Language Models are Few-Shot Learners",
+      "arxiv_id": "2005.14165",
+      "filename": "gpt3",
+      "year": 2020,
+      "key_concepts": [
+        "Few-shot learning",
+        "Scale",
+        "Emergent abilities"
+      ]
+    },
+    {
+      "title": "BERT: Pre-training of Deep Bidirectional Transformers",
+      "arxiv_id": "1810.04805",
+      "filename": "bert",
+      "year": 2018,
+      "key_concepts": [
+        "Bidirectional attention",
+        "Masked language modeling",
+        "Pre-training"
+      ]
+    }
+  ],
+  "concepts": [
+    "transformers",
+    "attention",
+    "neural_networks"
+  ]
+}
