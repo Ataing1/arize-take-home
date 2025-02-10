@@ -42,10 +42,10 @@ class State(TypedDict):
 @tool(response_format="content")
 def retrieve(state: State):
     """Retrieve relevant documents from the vector store based on the input question.
-    
+
     Args:
         state: The current state containing the question to search for
-        
+
     Returns:
         dict: A dictionary containing the retrieved documents in the 'context' key
     """
@@ -53,8 +53,10 @@ def retrieve(state: State):
     print("\nRetrieved Documents:")
     for i, doc in enumerate(retrieved_docs):
         print(f"\nDocument {i+1}:")
-        print(f"Source: {doc.metadata.get('source_type')} - {doc.metadata.get('title')}")
-        print(f"Content: {doc.page_content[:200]}...") 
+        print(
+            f"Source: {doc.metadata.get('source_type')} - {doc.metadata.get('title')}"
+        )
+        print(f"Content: {doc.page_content[:200]}...")
     return {"context": retrieved_docs}
 
 
@@ -64,6 +66,7 @@ def retrieve(state: State):
 #     response = llm.invoke(messages)
 #     return {"answer": response.content}
 
+
 # Step 1: Generate an AIMessage that may include a tool-call to be sent.
 def query_or_respond(state: MessagesState):
     """Generate tool call for retrieval or respond."""
@@ -72,7 +75,9 @@ def query_or_respond(state: MessagesState):
     # MessagesState appends messages to state instead of overwriting
     return {"messages": [response]}
 
+
 tools = ToolNode([retrieve])
+
 
 # Step 3: Generate a response using the retrieved content.
 def generate(state: MessagesState):
@@ -135,12 +140,34 @@ graph_builder.add_conditional_edges(
 graph_builder.add_edge("tools", "generate")
 graph_builder.add_edge("generate", END)
 
-graph = graph_builder.compile()
+from langgraph.checkpoint.memory import MemorySaver
 
-input_message = "what is a neural net"
+memory = MemorySaver()
 
-for step in graph.stream(
-    {"messages": [{"role": "user", "content": input_message}]},
-    stream_mode="values",
-):
-    step["messages"][-1].pretty_print()
+graph = graph_builder.compile(checkpointer=memory)
+
+def main():
+    config = {"configurable": {"thread_id": "abc123"}}
+    
+    print("Welcome to the Research QA System! Type 'quit' to exit.")
+    
+    while True:
+        user_input = input("\nEnter your question: ").strip()
+        
+        if user_input.lower() in ['quit', 'exit', 'q']:
+            print("Goodbye!")
+            break
+            
+        print("\nProcessing your question...\n")
+        
+        for step in graph.stream(
+            {"messages": [{"role": "user", "content": user_input}]},
+            stream_mode="values",
+            config=config,
+        ):
+            step["messages"][-1].pretty_print()
+
+if __name__ == "__main__":
+    main()
+  
+
