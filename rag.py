@@ -57,6 +57,12 @@ def retrieve(state: State):
             f"Source: {doc.metadata.get('source_type')} - {doc.metadata.get('title')}"
         )
         print(f"Content: {doc.page_content[:200]}...")
+    
+    # Add title to document content for context
+    for doc in retrieved_docs:
+        if doc.metadata.get('title'):
+            doc.page_content = f"Title: {doc.metadata.get('title')}\n\nContent: {doc.page_content}"
+    
     return {"context": retrieved_docs}
 
 
@@ -98,7 +104,7 @@ def generate(state: MessagesState):
         "Use the following pieces of retrieved context to answer "
         "the question. If you don't know the answer, say that you "
         "don't know. Use three sentences maximum and keep the "
-        "answer concise."
+        "answer concise. When referencing papers, include their titles."
         "\n\n"
         f"{docs_content}"
     )
