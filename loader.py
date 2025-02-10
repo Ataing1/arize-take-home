@@ -5,7 +5,7 @@ from typing import List, Dict
 from langchain_community.document_loaders import PyPDFLoader, UnstructuredMarkdownLoader
 from langchain.text_splitter import RecursiveCharacterTextSplitter
 from langchain.docstore.document import Document
-from langchain_community.vectorstores import Chroma
+from langchain_chroma import Chroma
 from langchain_community.vectorstores.utils import filter_complex_metadata
 from langchain_openai import OpenAIEmbeddings
 from dotenv import load_dotenv
