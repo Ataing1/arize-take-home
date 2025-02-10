@@ -15,3 +15,8 @@ i asked claude to come up with a list of research papers and fundamental related
 
 # TODO - at the end, add a feature allowing users to input a valid arxiv link and it should load and add that research paper to the list.
 
+# TODO nice cli to see the options of what you can do. 
+- view documents
+- add documents (by arxiv id)
+
+
