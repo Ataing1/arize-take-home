@@ -13,3 +13,5 @@ using python 3.12.8
 
 i asked claude to come up with a list of research papers and fundamental related topics and it wrote me a script to collect all of the PDFs and wrote a small blurb on how they relate to the fundamental concepts 
 
+# TODO - at the end, add a feature allowing users to input a valid arxiv link and it should load and add that research paper to the list.
+
