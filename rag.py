@@ -1,25 +1,18 @@
 from langchain import hub
-from langchain_community.document_loaders import WebBaseLoader
 from langchain_core.documents import Document
-from langchain_text_splitters import RecursiveCharacterTextSplitter
-from langgraph.graph import START, StateGraph, MessagesState
+from langgraph.graph import StateGraph, MessagesState
 from typing_extensions import List, TypedDict
 from langchain_core.tools import tool
 from langchain_core.messages import SystemMessage
-
+import argparse
+import halo
 from langgraph.prebuilt import ToolNode
-
 from loader import ResearchLoader
-
 from langchain.chat_models import init_chat_model
-
 from langchain_openai import OpenAIEmbeddings
-
 from langchain_core.vectorstores import InMemoryVectorStore
-
 from langgraph.graph import END
 from langgraph.prebuilt import ToolNode, tools_condition
-
 from langgraph.checkpoint.memory import MemorySaver
 
 llm = init_chat_model("claude-3-5-sonnet-latest", model_provider="anthropic")
@@ -28,11 +21,14 @@ embeddings = OpenAIEmbeddings(model="text-embedding-3-large")
 vector_store = InMemoryVectorStore(embeddings)
 
 loader = ResearchLoader()
+spinner = halo.Halo(text="Loading documents...", spinner="dots")
+spinner.start()
 docs = loader.load_all()
-_ = vector_store.add_documents(documents=docs)
+spinner.succeed("Documents loaded successfully")
 
-# Define prompt for question-answering
-prompt = hub.pull("rlm/rag-prompt")
+spinner.start("Indexing documents...")
+_ = vector_store.add_documents(documents=docs)
+spinner.succeed("Documents indexed successfully")
 
 
 # Define state for application
@@ -52,15 +48,17 @@ def retrieve(state: State):
     Returns:
         dict: A dictionary containing the retrieved documents in the 'context' key
     """
-    retrieved_docs = vector_store.similarity_search(state["question"], k=10)
-    print("\nRetrieved Documents:")
-    for i, doc in enumerate(retrieved_docs):
-        print(f"\nDocument {i+1}:")
-        print(
-            f"Source: {doc.metadata.get('title')} ({doc.metadata.get('section', 'unknown section')})"
-        )
-        print(f"Key concepts: {', '.join(doc.metadata.get('key_concepts', []))}")
-        print(f"Content: {doc.page_content[:200]}...")
+    spinner.start("fetching documents...")
+    k = 10
+    retrieved_docs = vector_store.similarity_search(state["question"], k=k)
+    if args.verbose:
+        print("\nRetrieved Documents:")
+        for i, doc in enumerate(retrieved_docs):
+            print(f"\nDocument {i+1}:")
+            print(
+                f"Source: {doc.metadata.get('title')} ({doc.metadata.get('section', 'unknown section')})"
+            )
+            print(f"Key concepts: {', '.join(doc.metadata.get('key_concepts', []))}")
 
     # Add title to document content for context
     for doc in retrieved_docs:
@@ -68,11 +66,10 @@ def retrieve(state: State):
             doc.page_content = (
                 f"Title: {doc.metadata.get('title')}\n\nContent: {doc.page_content}"
             )
-
+    spinner.succeed(f"fetched {k} documents")
     return {"context": retrieved_docs}
 
 
-# Improved system message for better responses
 SYSTEM_TEMPLATE = """You are an expert research assistant specializing in analyzing academic papers and technical documents. 
 
 When answering questions:
@@ -89,19 +86,11 @@ Context:
 Remember to maintain academic rigor while keeping responses clear and concise.
 """
 
-# def generate(state: State):
-#     docs_content = "\n\n".join(doc.page_content for doc in state["context"])
-#     messages = prompt.invoke({"question": state["question"], "context": docs_content})
-#     response = llm.invoke(messages)
-#     return {"answer": response.content}
 
-
-# Step 1: Generate an AIMessage that may include a tool-call to be sent.
 def query_or_respond(state: MessagesState):
     """Generate tool call for retrieval or respond."""
     llm_with_tools = llm.bind_tools([retrieve])
     response = llm_with_tools.invoke(state["messages"])
-    # MessagesState appends messages to state instead of overwriting
     return {"messages": [response]}
 
 
@@ -142,7 +131,15 @@ def generate(state: MessagesState):
     response = llm.invoke(prompt)
     return {"messages": [response]}
 
+
 def main():
+    parser = argparse.ArgumentParser(description="Research QA System")
+    parser.add_argument(
+        "--verbose", action="store_true", help="Print retrieved documents"
+    )
+    global args
+    args = parser.parse_args()
+
     graph_builder = StateGraph(MessagesState)
     graph_builder.add_node(query_or_respond)
     graph_builder.add_node(tools)
@@ -159,9 +156,12 @@ def main():
     config = {"configurable": {"thread_id": "abc123"}}
     memory = MemorySaver()
 
+    spinner = halo.Halo(text="Initializing Research QA System...", spinner="dots")
+    spinner.start()
     graph = graph_builder.compile(checkpointer=memory)
+    spinner.succeed("Research QA System initialized!")
 
-    print("Welcome to the Research QA System! Type 'quit' to exit.")
+    print("\nWelcome to the Research QA System! Type 'quit' to exit.")
 
     while True:
         user_input = input("\nEnter your question: ").strip()

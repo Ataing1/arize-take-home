@@ -6,6 +6,8 @@ I used LangChain to build the RAG system due to its extensive support and ease o
 
 For data collection, I wrote a script that starts with the seed document "Attention Is All You Need," downloads it, fetches all metadata, and then finds and scrapes all related research papers referenced through arXiv IDs. 
 
+I added a feature where you can enter your own seed article to create a dataset around an arxiv article that interests you! 
+
 # Setup guide
 
 ## installation and setup
@@ -32,13 +34,24 @@ using python 3.12.8
 
 1. `python paper_collector.py` to download the pdf for the seed article and recursively articles mentioned in the main pdf. 
 
+Arguments:
+- `--seed-paper`: ArXiv ID in format YYMM.NNNNN (default: 1706.03762 - "Attention is All You Need")
+- `--max-depth`: Maximum depth for recursive paper collection (default: 2)
+- `--max-papers`: Maximum number of papers to collect (default: 50)
+
+Example usage:
+```bash
+# Use defaults (Attention is All You Need paper)
+python paper_collector.py
+
+# Collect a different paper with custom settings
+python paper_collector.py --seed-paper 1602.02410 --max-depth 3 --max-papers 100
+```
+
 2. `python rag.py` to run the actual q and a system
+    use -- verbose to see which documents got retrieved
 
-## TODO nice cli to see the options of what you can do. 
-- view documents
-- add documents (by arxiv id)
-
-# Good questions to ask that relate to the documents stored:
+# Good questions to ask that relate to the documents stored (these questions target the default paper "Attention is All you need):
 
 ## 1. What were the key problems or limitations in sequence modeling that the transformer architecture aimed to address?
 
