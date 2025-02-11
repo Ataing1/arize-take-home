@@ -1,6 +1,10 @@
-i'm thinking i want to build a rag that can teach me about the most notable ai research papers and their findings as well as common model architectures and their evolution like transformers, CNNs, and RNNs. 
+For my take home rag project. i decided to build a rag that was capable of answering questions related to the research paper "Attention Is All You Need" as well as research papers that were linked inside "Attention Is All You Need". I chose to do this because Arize is an AI evaluation company, so i felt it would be on theme to build something that would help analyze or understand AI systems themselves.
 
-i plan to use langchain with a CLI application. i'll probrably end up using alot of jupyter notebook to test various stages of development
+I used langchain to build the rag since it has extensive support and is easy to use. I chose to use open ai's embeddings model arbitrarily since it's unrelated to which LLM I use. The most important thing was that i needed to use the same embedding model for embedding all of the documents and all of the queries provided by the LLM. For the model I chose claude 3.5 sonnet because i use it the most on a daily basis and i like it's answers better. 
+
+for data collection i wrote a script to start with the seed document "Attention Is All You Need" and then it will download the document, fetch all metadata and then, find all links to other arxiv ids and scrape all of those related research papers. 
+
+
 
 
 using python 3.12.8
@@ -11,7 +15,6 @@ using python 3.12.8
 
 `pip freeze` to check that it's a fresh virtual environment (should be empty)
 
- i generated a dataset starting a seed arxiv paper, and recursively scraping the other arxiv papers that appeared in the current paper. 
 
  
 

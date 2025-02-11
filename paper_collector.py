@@ -57,6 +57,21 @@ class RecursivePaperCollector:
         except Exception as e:
             print(f"Error fetching metadata for {arxiv_id}: {e}")
         return None
+    
+    def _detect_section(self, text: str) -> str:
+        sections = {
+            "abstract": ["abstract", "summary"],
+            "introduction": ["introduction", "1.", "i."],
+            "methodology": ["method", "approach", "3.", "iii."],
+            "results": ["results", "evaluation", "4.", "iv."],
+            "conclusion": ["conclusion", "discussion", "6.", "vi."]
+        }
+        
+        lower_text = text.lower()
+        for section_name, markers in sections.items():
+            if any(marker in lower_text for marker in markers):
+                return section_name
+        return "other"
 
     def extract_arxiv_ids(self, text: str) -> Set[str]:
         """Extract arXiv IDs from text using regex patterns"""

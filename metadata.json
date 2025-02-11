@@ -1,0 +1,685 @@
+{
+  "papers": [
+    {
+      "arxiv_id": "1706.03762",
+      "title": "Attention Is All You Need",
+      "authors": [
+        "Ashish Vaswani",
+        "Noam Shazeer",
+        "Niki Parmar",
+        "Jakob Uszkoreit",
+        "Llion Jones",
+        "Aidan N. Gomez",
+        "Lukasz Kaiser",
+        "Illia Polosukhin"
+      ],
+      "year": 2017,
+      "filename": "paper_1706.03762",
+      "references": [
+        "1602.02410",
+        "1508.07909",
+        "1512.00567",
+        "1705.04304",
+        "1609.08144",
+        "1608.05859",
+        "1701.06538",
+        "1308.0850",
+        "1610.10099v2",
+        "1703.03130",
+        "1511.06114",
+        "1606.04199",
+        "1703.10722",
+        "1705.03122v2",
+        "1406.1078",
+        "1508.04025",
+        "1610.02357",
+        "1412.3555"
+      ],
+      "depth": 0,
+      "date_added": "2025-02-10T18:47:33.811668"
+    },
+    {
+      "arxiv_id": "1602.02410",
+      "title": "Exploring the Limits of Language Modeling",
+      "authors": [
+        "Rafal Jozefowicz",
+        "Oriol Vinyals",
+        "Mike Schuster",
+        "Noam Shazeer",
+        "Yonghui Wu"
+      ],
+      "year": 2016,
+      "filename": "paper_1602.02410",
+      "references": [
+        "1506.05869",
+        "1511.03962",
+        "1509.00685",
+        "1508.00657",
+        "1512.00103",
+        "1308.0850",
+        "1508.06615",
+        "1404.2188",
+        "1410.8206",
+        "1409.2329",
+        "1511.06909",
+        "1511.03729",
+        "1406.1078",
+        "1502.04681",
+        "1508.02096",
+        "1211.5063",
+        "1312.3005",
+        "1507.04808"
+      ],
+      "depth": 1,
+      "date_added": "2025-02-10T18:47:34.078752"
+    },
+    {
+      "arxiv_id": "1508.07909",
+      "title": "Neural Machine Translation of Rare Words with Subword Units",
+      "authors": [
+        "Rico Sennrich",
+        "Barry Haddow",
+        "Alexandra Birch"
+      ],
+      "year": 2015,
+      "filename": "paper_1508.07909",
+      "references": [
+        "1212.5701",
+        "1508.06615"
+      ],
+      "depth": 1,
+      "date_added": "2025-02-10T18:47:34.442664"
+    },
+    {
+      "arxiv_id": "1512.00567",
+      "title": "Rethinking the Inception Architecture for Computer Vision",
+      "authors": [
+        "Christian Szegedy",
+        "Vincent Vanhoucke",
+        "Sergey Ioffe",
+        "Jonathon Shlens",
+        "Zbigniew Wojna"
+      ],
+      "year": 2015,
+      "filename": "paper_1512.00567",
+      "references": [
+        "1509.09308",
+        "1502.01852",
+        "1409.1556",
+        "1503.03832",
+        "1211.5063",
+        "1409.5185"
+      ],
+      "depth": 1,
+      "date_added": "2025-02-10T18:47:34.725426"
+    },
+    {
+      "arxiv_id": "1705.04304",
+      "title": "A Deep Reinforced Model for Abstractive Summarization",
+      "authors": [
+        "Romain Paulus",
+        "Caiming Xiong",
+        "Richard Socher"
+      ],
+      "year": 2017,
+      "filename": "paper_1705.04304",
+      "references": [
+        "1612.00563",
+        "1601.06733",
+        "1609.08144",
+        "1509.00685",
+        "1608.05859",
+        "1511.06732",
+        "1412.6980",
+        "1611.03382",
+        "1608.02927",
+        "1602.06023",
+        "1603.08148",
+        "1603.08887",
+        "1603.08023",
+        "1409.0473"
+      ],
+      "depth": 1,
+      "date_added": "2025-02-10T18:47:34.976903"
+    },
+    {
+      "arxiv_id": "1609.08144",
+      "title": "Google's Neural Machine Translation System: Bridging the Gap between\n  Human and Machine Translation",
+      "authors": [
+        "Yonghui Wu",
+        "Mike Schuster",
+        "Zhifeng Chen",
+        "Quoc V. Le",
+        "Mohammad Norouzi",
+        "Wolfgang Macherey",
+        "Maxim Krikun",
+        "Yuan Cao",
+        "Qin Gao",
+        "Klaus Macherey",
+        "Jeff Klingner",
+        "Apurva Shah",
+        "Melvin Johnson",
+        "Xiaobing Liu",
+        "\u0141ukasz Kaiser",
+        "Stephan Gouws",
+        "Yoshikiyo Kato",
+        "Taku Kudo",
+        "Hideto Kazawa",
+        "Keith Stevens",
+        "George Kurian",
+        "Nishant Patil",
+        "Wei Wang",
+        "Cliff Young",
+        "Jason Smith",
+        "Jason Riesa",
+        "Alex Rudnick",
+        "Oriol Vinyals",
+        "Greg Corrado",
+        "Macduff Hughes",
+        "Jeffrey Dean"
+      ],
+      "year": 2016,
+      "filename": "paper_1609.08144",
+      "references": [
+        "1505.00387",
+        "1605.04711",
+        "1603.00810",
+        "1606.04199",
+        "1510.00149",
+        "1512.06473",
+        "1412.6980",
+        "1604.00788",
+        "1603.08148",
+        "1211.5063",
+        "1603.06147",
+        "1502.02551"
+      ],
+      "depth": 1,
+      "date_added": "2025-02-10T18:47:35.236853"
+    },
+    {
+      "arxiv_id": "1608.05859",
+      "title": "Using the Output Embedding to Improve Language Models",
+      "authors": [
+        "Ofir Press",
+        "Lior Wolf"
+      ],
+      "year": 2016,
+      "filename": "paper_1608.05859",
+      "references": [
+        "1402.3722",
+        "1503.02531",
+        "1603.00391",
+        "1308.0850",
+        "1505.01504",
+        "1606.02891",
+        "1301.3781",
+        "1602.01137",
+        "1409.0473",
+        "1206.6426",
+        "1611.01462",
+        "1512.05287",
+        "1412.7753",
+        "1409.2329",
+        "1312.6026",
+        "1607.03474",
+        "1212.5701"
+      ],
+      "depth": 1,
+      "date_added": "2025-02-10T18:47:35.582721"
+    },
+    {
+      "arxiv_id": "1701.06538",
+      "title": "Outrageously Large Neural Networks: The Sparsely-Gated\n  Mixture-of-Experts Layer",
+      "authors": [
+        "Noam Shazeer",
+        "Azalia Mirhoseini",
+        "Krzysztof Maziarz",
+        "Andy Davis",
+        "Quoc Le",
+        "Geoffrey Hinton",
+        "Jeff Dean"
+      ],
+      "year": 2017,
+      "filename": "paper_1701.06538",
+      "references": [],
+      "depth": 1,
+      "date_added": "2025-02-10T18:47:35.880109"
+    },
+    {
+      "arxiv_id": "1308.0850",
+      "title": "Generating Sequences With Recurrent Neural Networks",
+      "authors": [
+        "Alex Graves"
+      ],
+      "year": 2013,
+      "filename": "paper_1308.0850",
+      "references": [
+        "1108.3298"
+      ],
+      "depth": 1,
+      "date_added": "2025-02-10T18:47:36.105774"
+    },
+    {
+      "arxiv_id": "1610.10099v2",
+      "title": "Neural Machine Translation in Linear Time",
+      "authors": [
+        "Nal Kalchbrenner",
+        "Lasse Espeholt",
+        "Karen Simonyan",
+        "Aaron van den Oord",
+        "Alex Graves",
+        "Koray Kavukcuoglu"
+      ],
+      "year": 2016,
+      "filename": "paper_1610.10099v2",
+      "references": [
+        "1505.00387",
+        "1603.05027",
+        "1607.03085",
+        "1609.08144",
+        "1606.04199",
+        "1308.0850",
+        "1606.06630",
+        "1609.01704",
+        "1412.6980",
+        "1412.7062",
+        "1607.06450",
+        "1406.1078",
+        "1502.02367",
+        "1609.03499",
+        "1511.07122",
+        "1312.6034",
+        "1409.0473",
+        "1610.00527"
+      ],
+      "depth": 1,
+      "date_added": "2025-02-10T18:47:36.392184"
+    },
+    {
+      "arxiv_id": "1703.03130",
+      "title": "A Structured Self-attentive Sentence Embedding",
+      "authors": [
+        "Zhouhan Lin",
+        "Minwei Feng",
+        "Cicero Nogueira dos Santos",
+        "Mo Yu",
+        "Bing Xiang",
+        "Bowen Zhou",
+        "Yoshua Bengio"
+      ],
+      "year": 2017,
+      "filename": "paper_1703.03130",
+      "references": [
+        "1607.04315",
+        "1511.06361",
+        "1602.03609",
+        "1605.09090",
+        "1512.08422",
+        "1607.06275",
+        "1404.2188",
+        "1607.04492",
+        "1603.03827",
+        "1301.3781",
+        "1408.5882"
+      ],
+      "depth": 1,
+      "date_added": "2025-02-10T18:47:36.645174"
+    },
+    {
+      "arxiv_id": "1511.06114",
+      "title": "Multi-task Sequence to Sequence Learning",
+      "authors": [
+        "Minh-Thang Luong",
+        "Quoc V. Le",
+        "Ilya Sutskever",
+        "Oriol Vinyals",
+        "Lukasz Kaiser"
+      ],
+      "year": 2015,
+      "filename": "paper_1511.06114",
+      "references": [
+        "1602.02410",
+        "1503.03535"
+      ],
+      "depth": 1,
+      "date_added": "2025-02-10T18:47:36.942691"
+    },
+    {
+      "arxiv_id": "1606.04199",
+      "title": "Deep Recurrent Models with Fast-Forward Connections for Neural Machine\n  Translation",
+      "authors": [
+        "Jie Zhou",
+        "Ying Cao",
+        "Xuguang Wang",
+        "Peng Li",
+        "Wei Xu"
+      ],
+      "year": 2016,
+      "filename": "paper_1606.04199",
+      "references": [
+        "1510.07526",
+        "1207.0580",
+        "1212.5701",
+        "1508.03790"
+      ],
+      "depth": 1,
+      "date_added": "2025-02-10T18:47:37.252867"
+    },
+    {
+      "arxiv_id": "1703.10722",
+      "title": "Factorization tricks for LSTM networks",
+      "authors": [
+        "Oleksii Kuchaiev",
+        "Boris Ginsburg"
+      ],
+      "year": 2017,
+      "filename": "paper_1703.10722",
+      "references": [
+        "1602.02410",
+        "1610.05256",
+        "1409.1556",
+        "1609.08144",
+        "1701.06538",
+        "1409.2329",
+        "9239.29693",
+        "1610.02357",
+        "1312.3005"
+      ],
+      "depth": 1,
+      "date_added": "2025-02-10T18:47:37.501409"
+    },
+    {
+      "arxiv_id": "1705.03122v2",
+      "title": "Convolutional Sequence to Sequence Learning",
+      "authors": [
+        "Jonas Gehring",
+        "Michael Auli",
+        "David Grangier",
+        "Denis Yarats",
+        "Yann N. Dauphin"
+      ],
+      "year": 2017,
+      "filename": "paper_1705.03122v2",
+      "references": [
+        "1701.00138",
+        "1607.05108",
+        "1606.05328",
+        "1609.08144",
+        "1602.07868",
+        "1604.01904",
+        "1606.04199"
+      ],
+      "depth": 1,
+      "date_added": "2025-02-10T18:47:37.784009"
+    },
+    {
+      "arxiv_id": "1406.1078",
+      "title": "Learning Phrase Representations using RNN Encoder-Decoder for\n  Statistical Machine Translation",
+      "authors": [
+        "Kyunghyun Cho",
+        "Bart van Merrienboer",
+        "Caglar Gulcehre",
+        "Dzmitry Bahdanau",
+        "Fethi Bougares",
+        "Holger Schwenk",
+        "Yoshua Bengio"
+      ],
+      "year": 2014,
+      "filename": "paper_1406.1078",
+      "references": [
+        "1212.5701"
+      ],
+      "depth": 1,
+      "date_added": "2025-02-10T18:47:38.020935"
+    },
+    {
+      "arxiv_id": "1508.04025",
+      "title": "Effective Approaches to Attention-based Neural Machine Translation",
+      "authors": [
+        "Minh-Thang Luong",
+        "Hieu Pham",
+        "Christopher D. Manning"
+      ],
+      "year": 2015,
+      "filename": "paper_1508.04025",
+      "references": [],
+      "depth": 1,
+      "date_added": "2025-02-10T18:47:38.342974"
+    },
+    {
+      "arxiv_id": "1610.02357",
+      "title": "Xception: Deep Learning with Depthwise Separable Convolutions",
+      "authors": [
+        "Fran\u00e7ois Chollet"
+      ],
+      "year": 2016,
+      "filename": "paper_1610.02357",
+      "references": [
+        "1409.1556",
+        "1512.00567",
+        "1312.4400",
+        "1511.07289",
+        "1512.03385",
+        "1412.5474",
+        "1602.07261",
+        "1608.04337"
+      ],
+      "depth": 1,
+      "date_added": "2025-02-10T18:47:38.594115"
+    },
+    {
+      "arxiv_id": "1412.3555",
+      "title": "Empirical Evaluation of Gated Recurrent Neural Networks on Sequence\n  Modeling",
+      "authors": [
+        "Junyoung Chung",
+        "Caglar Gulcehre",
+        "KyungHyun Cho",
+        "Yoshua Bengio"
+      ],
+      "year": 2014,
+      "filename": "paper_1412.3555",
+      "references": [
+        "1409.1259",
+        "1308.4214",
+        "1308.0850",
+        "1409.0473",
+        "1409.3215"
+      ],
+      "depth": 1,
+      "date_added": "2025-02-10T18:47:38.835426"
+    }
+  ],
+  "citations": {
+    "1706.03762": [
+      "1602.02410",
+      "1508.07909",
+      "1512.00567",
+      "1705.04304",
+      "1609.08144",
+      "1608.05859",
+      "1701.06538",
+      "1308.0850",
+      "1610.10099v2",
+      "1703.03130",
+      "1511.06114",
+      "1606.04199",
+      "1703.10722",
+      "1705.03122v2",
+      "1406.1078",
+      "1508.04025",
+      "1610.02357",
+      "1412.3555"
+    ],
+    "1602.02410": [
+      "1506.05869",
+      "1511.03962",
+      "1509.00685",
+      "1508.00657",
+      "1512.00103",
+      "1308.0850",
+      "1508.06615",
+      "1404.2188",
+      "1410.8206",
+      "1409.2329",
+      "1511.06909",
+      "1511.03729",
+      "1406.1078",
+      "1502.04681",
+      "1508.02096",
+      "1211.5063",
+      "1312.3005",
+      "1507.04808"
+    ],
+    "1508.07909": [
+      "1212.5701",
+      "1508.06615"
+    ],
+    "1512.00567": [
+      "1509.09308",
+      "1502.01852",
+      "1409.1556",
+      "1503.03832",
+      "1211.5063",
+      "1409.5185"
+    ],
+    "1705.04304": [
+      "1612.00563",
+      "1601.06733",
+      "1609.08144",
+      "1509.00685",
+      "1608.05859",
+      "1511.06732",
+      "1412.6980",
+      "1611.03382",
+      "1608.02927",
+      "1602.06023",
+      "1603.08148",
+      "1603.08887",
+      "1603.08023",
+      "1409.0473"
+    ],
+    "1609.08144": [
+      "1505.00387",
+      "1605.04711",
+      "1603.00810",
+      "1606.04199",
+      "1510.00149",
+      "1512.06473",
+      "1412.6980",
+      "1604.00788",
+      "1603.08148",
+      "1211.5063",
+      "1603.06147",
+      "1502.02551"
+    ],
+    "1608.05859": [
+      "1402.3722",
+      "1503.02531",
+      "1603.00391",
+      "1308.0850",
+      "1505.01504",
+      "1606.02891",
+      "1301.3781",
+      "1602.01137",
+      "1409.0473",
+      "1206.6426",
+      "1611.01462",
+      "1512.05287",
+      "1412.7753",
+      "1409.2329",
+      "1312.6026",
+      "1607.03474",
+      "1212.5701"
+    ],
+    "1701.06538": [],
+    "1308.0850": [
+      "1108.3298"
+    ],
+    "1610.10099v2": [
+      "1505.00387",
+      "1603.05027",
+      "1607.03085",
+      "1609.08144",
+      "1606.04199",
+      "1308.0850",
+      "1606.06630",
+      "1609.01704",
+      "1412.6980",
+      "1412.7062",
+      "1607.06450",
+      "1406.1078",
+      "1502.02367",
+      "1609.03499",
+      "1511.07122",
+      "1312.6034",
+      "1409.0473",
+      "1610.00527"
+    ],
+    "1703.03130": [
+      "1607.04315",
+      "1511.06361",
+      "1602.03609",
+      "1605.09090",
+      "1512.08422",
+      "1607.06275",
+      "1404.2188",
+      "1607.04492",
+      "1603.03827",
+      "1301.3781",
+      "1408.5882"
+    ],
+    "1511.06114": [
+      "1602.02410",
+      "1503.03535"
+    ],
+    "1606.04199": [
+      "1510.07526",
+      "1207.0580",
+      "1212.5701",
+      "1508.03790"
+    ],
+    "1703.10722": [
+      "1602.02410",
+      "1610.05256",
+      "1409.1556",
+      "1609.08144",
+      "1701.06538",
+      "1409.2329",
+      "9239.29693",
+      "1610.02357",
+      "1312.3005"
+    ],
+    "1705.03122v2": [
+      "1701.00138",
+      "1607.05108",
+      "1606.05328",
+      "1609.08144",
+      "1602.07868",
+      "1604.01904",
+      "1606.04199"
+    ],
+    "1406.1078": [
+      "1212.5701"
+    ],
+    "1508.04025": [],
+    "1610.02357": [
+      "1409.1556",
+      "1512.00567",
+      "1312.4400",
+      "1511.07289",
+      "1512.03385",
+      "1412.5474",
+      "1602.07261",
+      "1608.04337"
+    ],
+    "1412.3555": [
+      "1409.1259",
+      "1308.4214",
+      "1308.0850",
+      "1409.0473",
+      "1409.3215"
+    ]
+  },
+  "last_updated": "2025-02-10T18:47:38.835824"
+}

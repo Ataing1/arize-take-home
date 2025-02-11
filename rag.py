@@ -13,7 +13,7 @@ from loader import ResearchLoader
 
 from langchain.chat_models import init_chat_model
 
-llm = init_chat_model("gpt-4o-mini", model_provider="openai")
+llm = init_chat_model("claude-3-5-sonnet-latest", model_provider="anthropic")
 
 from langchain_openai import OpenAIEmbeddings
 
@@ -49,7 +49,7 @@ def retrieve(state: State):
     Returns:
         dict: A dictionary containing the retrieved documents in the 'context' key
     """
-    retrieved_docs = vector_store.similarity_search(state["question"])
+    retrieved_docs = vector_store.similarity_search(state["question"], k=10)
     print("\nRetrieved Documents:")
     for i, doc in enumerate(retrieved_docs):
         print(f"\nDocument {i+1}:")
