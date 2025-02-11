@@ -141,3 +141,5 @@ During the implementation of this project, I experienced several key insights:
 
 # Future additions
 if i had more time on the project i might add a voice interface. i'd like to be able to speak to the computer and have it read back out the answer to me. 
+
+i'd also be interested in figuring out ways to find articles that reference the seed article. this way you can ask questions about multiple related research projects and how they differ from one another. 
