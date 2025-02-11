@@ -125,3 +125,6 @@ During the implementation of this project, I experienced several key insights:
 
 3. System Performance:
     - After refining questions to focus on the actual content of stored PDFs, Claude performed well and maintained strict adherence to the prompt
+
+# Future additions
+if i had more time on the project i might add a voice interface. i'd like to be able to speak to the computer and have it read back out the answer to me. 

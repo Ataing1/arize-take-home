@@ -13,15 +13,18 @@ from loader import ResearchLoader
 
 from langchain.chat_models import init_chat_model
 
-llm = init_chat_model("claude-3-5-sonnet-latest", model_provider="anthropic")
-# llm = init_chat_model("gpt-4o-mini", model_provider="openai")
 from langchain_openai import OpenAIEmbeddings
-
-embeddings = OpenAIEmbeddings(model="text-embedding-3-large")
-
 
 from langchain_core.vectorstores import InMemoryVectorStore
 
+from langgraph.graph import END
+from langgraph.prebuilt import ToolNode, tools_condition
+
+from langgraph.checkpoint.memory import MemorySaver
+
+llm = init_chat_model("claude-3-5-sonnet-latest", model_provider="anthropic")
+
+embeddings = OpenAIEmbeddings(model="text-embedding-3-large")
 vector_store = InMemoryVectorStore(embeddings)
 
 loader = ResearchLoader()
@@ -136,45 +139,27 @@ def generate(state: MessagesState):
     ]
     prompt = [SystemMessage(system_message_content)] + conversation_messages
 
-    # Run
     response = llm.invoke(prompt)
     return {"messages": [response]}
 
-
-# # Compile application and test
-# graph_builder = StateGraph(State).add_sequence([retrieve, generate])
-# graph_builder.add_edge(START, "retrieve")
-# graph = graph_builder.compile()
-
-# response = graph.invoke({"question": "What are the main research papers that discovered neural nets?"})
-# print(response["answer"])
-
-from langgraph.graph import END
-from langgraph.prebuilt import ToolNode, tools_condition
-
-graph_builder = StateGraph(MessagesState)
-graph_builder.add_node(query_or_respond)
-graph_builder.add_node(tools)
-graph_builder.add_node(generate)
-
-graph_builder.set_entry_point("query_or_respond")
-graph_builder.add_conditional_edges(
-    "query_or_respond",
-    tools_condition,
-    {END: END, "tools": "tools"},
-)
-graph_builder.add_edge("tools", "generate")
-graph_builder.add_edge("generate", END)
-
-from langgraph.checkpoint.memory import MemorySaver
-
-memory = MemorySaver()
-
-graph = graph_builder.compile(checkpointer=memory)
-
-
 def main():
+    graph_builder = StateGraph(MessagesState)
+    graph_builder.add_node(query_or_respond)
+    graph_builder.add_node(tools)
+    graph_builder.add_node(generate)
+
+    graph_builder.set_entry_point("query_or_respond")
+    graph_builder.add_conditional_edges(
+        "query_or_respond",
+        tools_condition,
+        {END: END, "tools": "tools"},
+    )
+    graph_builder.add_edge("tools", "generate")
+    graph_builder.add_edge("generate", END)
     config = {"configurable": {"thread_id": "abc123"}}
+    memory = MemorySaver()
+
+    graph = graph_builder.compile(checkpointer=memory)
 
     print("Welcome to the Research QA System! Type 'quit' to exit.")
 
