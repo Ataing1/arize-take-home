@@ -126,9 +126,10 @@ The paper focused more on addressing technical training considerations rather th
 During the implementation of this project, I experienced several key insights:
 
 1. Model Selection:
-    - Initially used OpenAI GPT-4, which proved too capable as it answered questions with or without the retrieved context    
-    - Tested GPT-4 Mini, which failed to adhere to the prompt requiring answers based solely on retrieved context
-    - Finally settled on Claude, which strictly adhered to the context and highlighted issues in the RAG system
+    - Initially used OpenAI GPT-4o-mini, which proved too capable as it answered questions with or without the retrieved context. It was also bad because it didn't adhere to the prompt which asked it to strictly use the content gathered from the retrieval step. 
+    - moved on to Claude, which strictly adhered to the context and highlighted issues in the RAG system
+    - improving the types of questions asked gave claude high prompt adherence and also showed the accuracy of the data retrieval
+
 
 2. Data Collection:
     - The document collection process worked well
