@@ -14,7 +14,7 @@ from loader import ResearchLoader
 from langchain.chat_models import init_chat_model
 
 llm = init_chat_model("claude-3-5-sonnet-latest", model_provider="anthropic")
-
+# llm = init_chat_model("gpt-4o-mini", model_provider="openai")
 from langchain_openai import OpenAIEmbeddings
 
 embeddings = OpenAIEmbeddings(model="text-embedding-3-large")
@@ -53,9 +53,8 @@ def retrieve(state: State):
     print("\nRetrieved Documents:")
     for i, doc in enumerate(retrieved_docs):
         print(f"\nDocument {i+1}:")
-        print(
-            f"Source: {doc.metadata.get('source_type')} - {doc.metadata.get('title')}"
-        )
+        print(f"Source: {doc.metadata.get('title')} ({doc.metadata.get('section', 'unknown section')})")
+        print(f"Key concepts: {', '.join(doc.metadata.get('key_concepts', []))}")
         print(f"Content: {doc.page_content[:200]}...")
     
     # Add title to document content for context
@@ -65,6 +64,22 @@ def retrieve(state: State):
     
     return {"context": retrieved_docs}
 
+# Improved system message for better responses
+SYSTEM_TEMPLATE = """You are an expert research assistant specializing in analyzing academic papers and technical documents. 
+
+When answering questions:
+1. Focus on information explicitly stated in the provided context
+2. Cite specific papers and their sections when providing information
+3. If the context is insufficient, acknowledge the limitations
+4. Structure responses to address key aspects systematically
+5. Highlight any relevant technical concepts or methodologies
+6. Note any gaps or ambiguities in the retrieved context
+
+Context:
+{context}
+
+Remember to maintain academic rigor while keeping responses clear and concise.
+"""
 
 # def generate(state: State):
 #     docs_content = "\n\n".join(doc.page_content for doc in state["context"])
