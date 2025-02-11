@@ -143,28 +143,3 @@ class ResearchLoader:
         )
 
         return vector_store
-
-
-# def main():
-#     """Example usage"""
-#     # Initialize loader
-#     loader = ResearchLoader()
-
-#     # Load all documents
-#     print("Loading documents...")
-#     documents = loader.load_all()
-#     print(f"Loaded {len(documents)} document chunks")
-
-#     # Create vector store
-#     print("Creating vector store...")
-#     vector_store = loader.create_vector_store(documents)
-#     print("Vector store created successfully")
-
-#     # Example metadata
-#     for i, doc in enumerate(documents[:2]):
-#         print(f"\nDocument {i + 1} metadata:")
-#         print(json.dumps(doc.metadata, indent=2))
-
-
-# if __name__ == "__main__":
-#     main()

@@ -53,16 +53,21 @@ def retrieve(state: State):
     print("\nRetrieved Documents:")
     for i, doc in enumerate(retrieved_docs):
         print(f"\nDocument {i+1}:")
-        print(f"Source: {doc.metadata.get('title')} ({doc.metadata.get('section', 'unknown section')})")
+        print(
+            f"Source: {doc.metadata.get('title')} ({doc.metadata.get('section', 'unknown section')})"
+        )
         print(f"Key concepts: {', '.join(doc.metadata.get('key_concepts', []))}")
         print(f"Content: {doc.page_content[:200]}...")
-    
+
     # Add title to document content for context
     for doc in retrieved_docs:
-        if doc.metadata.get('title'):
-            doc.page_content = f"Title: {doc.metadata.get('title')}\n\nContent: {doc.page_content}"
-    
+        if doc.metadata.get("title"):
+            doc.page_content = (
+                f"Title: {doc.metadata.get('title')}\n\nContent: {doc.page_content}"
+            )
+
     return {"context": retrieved_docs}
+
 
 # Improved system message for better responses
 SYSTEM_TEMPLATE = """You are an expert research assistant specializing in analyzing academic papers and technical documents. 
@@ -167,28 +172,33 @@ memory = MemorySaver()
 
 graph = graph_builder.compile(checkpointer=memory)
 
+
 def main():
     config = {"configurable": {"thread_id": "abc123"}}
-    
+
     print("Welcome to the Research QA System! Type 'quit' to exit.")
-    
+
     while True:
         user_input = input("\nEnter your question: ").strip()
-        
-        if user_input.lower() in ['quit', 'exit', 'q']:
+
+        if user_input.lower() in ["quit", "exit", "q"]:
             print("Goodbye!")
             break
-            
+
         print("\nProcessing your question...\n")
-        
+
+        print(f"Human: {user_input}\n")
+
         for step in graph.stream(
             {"messages": [{"role": "user", "content": user_input}]},
             stream_mode="values",
             config=config,
         ):
-            step["messages"][-1].pretty_print()
+            # Only print AI's final response (non-tool messages)
+            last_message = step["messages"][-1]
+            if last_message.type == "ai" and not last_message.tool_calls:
+                print(f"\nAssistant: {last_message.content}\n")
+
 
 if __name__ == "__main__":
     main()
-  
-

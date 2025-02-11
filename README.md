@@ -1,10 +1,10 @@
-# Project summary
+# Project Summary
 
-For my take home rag project. i decided to build a rag that was capable of answering questions related to the research paper "Attention Is All You Need" as well as research papers that were linked inside "Attention Is All You Need". I chose to do this because Arize is an AI evaluation company, so i felt it would be on theme to build something that would help analyze or understand AI systems themselves.
+For my take home RAG project, I decided to build a system capable of answering questions related to the research paper "Attention Is All You Need" as well as research papers cited within it. I chose this approach because Arize is an AI evaluation company, so I felt it would be thematic to build something that helps analyze and understand AI systems themselves.
 
-I used langchain to build the rag since it has extensive support and is easy to use. I chose to use open ai's embeddings model arbitrarily since it's unrelated to which LLM I use. The most important thing was that i needed to use the same embedding model for embedding all of the documents and all of the queries provided by the LLM. For the model I chose claude 3.5 sonnet because i use it the most on a daily basis and it adheres much more strictly to the prompt. I had some issues with gpt 4 giving answers with more than the context of the retrievals which i talk about more in the things i did poorly section
+I used LangChain to build the RAG system due to its extensive support and ease of use. I chose to use OpenAI's embeddings model since it's independent of which LLM I use. The most important consideration was using the same embedding model for both document embeddings and LLM query embeddings. For the model, I chose Claude 3.5 Sonnet because I use it frequently and it adheres more strictly to prompts. I encountered some issues with GPT-4 providing answers beyond the context of the retrievals, which I discuss further in the "Lessons Learned" section.
 
-for the data collection, i wrote a script to start with the seed document "Attention Is All You Need" and then it will download the document, fetch all metadata and then, find all links to other arxiv ids and scrape all of those related research papers. 
+For data collection, I wrote a script that starts with the seed document "Attention Is All You Need," downloads it, fetches all metadata, and then finds and scrapes all related research papers referenced through arXiv IDs. 
 
 # Setup guide
 
@@ -20,11 +20,19 @@ using python 3.12.8
 
 `pip install -r requirements.txt` to download the requirements for the project
 
+```
+## .env:
+ you will need an anthropic api key. rename the file .env.example to .env and paste in your real key. 
+
+ should start like sk-ant-api**-...
+
+```
+
 ## fetching the data
 
-`python paper_collector.py` to download the pdf for the seed article and recursively articles mentioned in the main pdf. 
+1. `python paper_collector.py` to download the pdf for the seed article and recursively articles mentioned in the main pdf. 
 
-`python rag.py` to run the actual q and a system
+2. `python rag.py` to run the actual q and a system
 
 ## TODO nice cli to see the options of what you can do. 
 - view documents
@@ -98,10 +106,22 @@ Based on the provided context, the paper discussed several key training aspects 
 
 The paper focused more on addressing technical training considerations rather than specific challenges, with emphasis on optimization strategies and regularization techniques to improve model performance.
 
-
-# lessons and things that went well and didn't go well
-
-So for most of the time i spent implementing this project i used open ai GPT 4o mini. in this case gpt 4 was too smart for it's own good, as it was able to answer the questions with or without the added context of what was retrieved from the vector store. GPT 4o mini was bad because it failed to adhere to the prompt where i told it to only use the context from the retrievals to answer the questions. When i switched to claude, claude began to adhere strictly to the context and highlighted some problem with my rag system. the data collection was good, but the questions i was testing the RAG system on were bad. i was asking the RAG questions tangentially related like "How did different research teams adapt the Transformer architecture for their specific tasks?" when that's not something that can be retrieved from "Attention is all you need" and those papers that it referenced. If i had more time i would try to include papers which cited "Attention is all you need" which whose context might have been able to answer the question "How did different research teams adapt the Transformer architecture for their specific tasks?" After asking the RAG questions about the actual pdfs stored, the claude was able to perform very well adn adhered closely to the prompt. 
-
     
 
+
+# Lessons Learned
+During the implementation of this project, I experienced several key insights:
+
+1. Model Selection:
+    - Initially used OpenAI GPT-4, which proved too capable as it answered questions with or without the retrieved context    
+    - Tested GPT-4 Mini, which failed to adhere to the prompt requiring answers based solely on retrieved context
+    - Finally settled on Claude, which strictly adhered to the context and highlighted issues in the RAG system
+
+2. Data Collection:
+    - The document collection process worked well
+     Question testing revealed limitations in the document scope
+    -  Questions like "How did different research teams adapt the Transformer architecture for their specific tasks?" couldn't be answered from the original paper and its references alone
+    - Future improvement: Include papers that cite "Attention Is All You Need" to provide broader context
+
+3. System Performance:
+    - After refining questions to focus on the actual content of stored PDFs, Claude performed well and maintained strict adherence to the prompt
